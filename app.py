@@ -33,12 +33,19 @@ div[data-testid="stVerticalBlock"] {
     gap: 0.35rem !important;
 }
 
+[data-testid="stMetric"] {
+    text-align: center;
+}
+
 [data-testid="stMetricLabel"] {
     font-size: 9px !important;
+    text-align: center;
+    justify-content: center;
 }
 
 [data-testid="stMetricValue"] {
     font-size: 16px !important;
+    text-align: center;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -73,7 +80,7 @@ c5.metric("Average Review Score", f"{avg_review:.2f}")
 
 def small(fig):
     fig.update_layout(
-        height=165,
+        height=175,
         margin=dict(l=5, r=5, t=5, b=5),
         font=dict(size=7)
     )
