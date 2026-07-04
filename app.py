@@ -7,8 +7,8 @@ st.set_page_config(page_title="Veridi Dashboard", layout="wide")
 st.markdown("""
 <style>
 .block-container {padding-top: 0.5rem; padding-bottom: 0rem;}
-h1 {font-size: 26px; text-align: center;}
-h3 {font-size: 15px;}
+h1 {font-size: 16px; text-align: center;}
+h3 {font-size: 8px;}
 [data-testid="stMetricValue"] {font-size: 24px;}
 </style>
 """, unsafe_allow_html=True)
