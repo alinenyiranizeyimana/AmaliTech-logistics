@@ -1,0 +1,13 @@
+Month_Num,Month,Total_Orders,Late_Orders,Late_Percentage
+1,January,7819,487,6.23
+2,February,8209,1102,13.42
+3,March,9549,1638,17.15
+4,April,9101,542,5.96
+5,May,10294,684,6.64
+6,June,9231,204,2.21
+7,July,10028,409,4.08
+8,August,10544,799,7.58
+9,September,4151,217,5.23
+10,October,4748,240,5.05
+11,November,7288,1043,14.31
+12,December,5514,462,8.38
