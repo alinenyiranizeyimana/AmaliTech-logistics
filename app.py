@@ -11,23 +11,22 @@ footer {visibility: hidden;}
 
 .block-container {
     padding-top: 0.5rem;
-    padding-left: 0.4rem;
-    padding-right: 0.4rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     padding-bottom: 0rem;
 }
 
 h2 {
     text-align: center;
     font-size: 22px !important;
+    font-weight: bold;
     margin-top: 0px !important;
-    margin-bottom: 8px !important;
-    padding: 0px !important;
+    margin-bottom: 10px !important;
 }
 
 h3 {
     font-size: 12px !important;
-    margin: 0px !important;
-    padding: 0px !important;
+    margin-bottom: 2px !important;
 }
 
 div[data-testid="stVerticalBlock"] {
@@ -35,15 +34,15 @@ div[data-testid="stVerticalBlock"] {
 }
 
 [data-testid="stMetric"] {
-    padding: 2px 6px !important;
+    padding: 2px 4px !important;
 }
 
 [data-testid="stMetricLabel"] {
-    font-size: 9px !important;
+    font-size: 10px !important;
 }
 
 [data-testid="stMetricValue"] {
-    font-size: 17px !important;
+    font-size: 18px !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -71,47 +70,96 @@ c5.metric("Average Review Score", f"{avg_review:.2f}")
 
 def small(fig):
     fig.update_layout(
-        height=170,
-        margin=dict(l=2, r=2, t=5, b=2),
-        font=dict(size=7)
+        height=180,
+        margin=dict(l=5, r=5, t=5, b=5),
+        font=dict(size=8),
+        title=None,
+        showlegend=True
     )
-    fig.update_xaxes(title_font=dict(size=8), tickfont=dict(size=7))
-    fig.update_yaxes(title_font=dict(size=8), tickfont=dict(size=7))
+    fig.update_xaxes(title_font=dict(size=9), tickfont=dict(size=8))
+    fig.update_yaxes(title_font=dict(size=9), tickfont=dict(size=8))
     return fig
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.subheader("Delivery Performance Distribution")
-    fig = px.pie(delivered, names="Delivery Status", hole=0.45)
+    fig = px.pie(
+        delivered,
+        names="Delivery_Status",
+        hole=0.45,
+        labels={"Delivery_Status": "Delivery Status"}
+    )
     st.plotly_chart(small(fig), use_container_width=True)
 
 with col2:
     st.subheader("Late Delivery Percentage by State")
     state = state.sort_values("Late_Percentage", ascending=False)
-    fig = px.bar(state, x="customer state", y="Late Percentage")
+    fig = px.bar(
+        state,
+        x="customer_state",
+        y="Late_Percentage",
+        labels={
+            "customer_state": "State",
+            "Late_Percentage": "Late Delivery (%)"
+        }
+    )
     st.plotly_chart(small(fig), use_container_width=True)
 
 with col3:
     st.subheader("Average Review Score by Delivery Status")
     review = delivered.groupby("Delivery_Status", as_index=False)["review_score"].mean()
-    fig = px.bar(review, x="Delivery Status", y="review score")
+    fig = px.bar(
+        review,
+        x="Delivery_Status",
+        y="review_score",
+        labels={
+            "Delivery_Status": "Delivery Status",
+            "review_score": "Average Review Score"
+        }
+    )
     st.plotly_chart(small(fig), use_container_width=True)
 
 col4, col5, col6 = st.columns(3)
 
 with col4:
-    st.subheader("Delivery Delay vs Review Score")
-    fig = px.scatter(delay, x="Days Difference", y="review score")
+    st.subheader("Delivery Delay vs Average Review Score")
+    fig = px.scatter(
+        delay,
+        x="Days_Difference",
+        y="review_score",
+        labels={
+            "Days_Difference": "Delivery Delay (Days)",
+            "review_score": "Average Review Score"
+        }
+    )
     st.plotly_chart(small(fig), use_container_width=True)
 
 with col5:
     st.subheader("Late Delivery % by Product Category")
     top_cat = category.sort_values("Late_Percentage", ascending=False).head(5)
-    fig = px.bar(top_cat, x="Late Percentage", y="product category name in english", orientation="h")
+    fig = px.bar(
+        top_cat,
+        x="Late_Percentage",
+        y="product_category_name_english",
+        orientation="h",
+        labels={
+            "Late_Percentage": "Late Delivery (%)",
+            "product_category_name_english": "Product Category"
+        }
+    )
     st.plotly_chart(small(fig), use_container_width=True)
 
 with col6:
     st.subheader("Monthly Late Delivery Trend")
-    fig = px.line(monthly, x="Month", y="Late_Percentage", markers=True)
+    fig = px.line(
+        monthly,
+        x="Month",
+        y="Late_Percentage",
+        markers=True,
+        labels={
+            "Month": "Month",
+            "Late_Percentage": "Late Delivery (%)"
+        }
+    )
     st.plotly_chart(small(fig), use_container_width=True)
