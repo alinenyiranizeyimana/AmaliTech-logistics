@@ -66,12 +66,21 @@ c5.metric("Average Review Score", f"{avg_review:.2f}")
 
 def small(fig):
     fig.update_layout(
-        height=172,
+        height=165,
         margin=dict(l=5, r=5, t=5, b=5),
         font=dict(size=7)
     )
-    fig.update_xaxes(title_font=dict(size=8), tickfont=dict(size=7))
-    fig.update_yaxes(title_font=dict(size=8), tickfont=dict(size=7))
+
+    fig.update_xaxes(
+        title_font=dict(size=9, family="Arial Black"),
+        tickfont=dict(size=8, family="Arial Black")
+    )
+
+    fig.update_yaxes(
+        title_font=dict(size=9, family="Arial Black"),
+        tickfont=dict(size=8, family="Arial Black")
+    )
+
     return fig
 
 col1, col2, col3 = st.columns(3)
