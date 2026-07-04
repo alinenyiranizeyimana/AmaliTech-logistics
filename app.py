@@ -33,20 +33,6 @@ div[data-testid="stVerticalBlock"] {
     gap: 0.35rem !important;
 }
 
-[data-testid="stMetric"] {
-    text-align: center;
-}
-
-[data-testid="stMetricLabel"] {
-    font-size: 9px !important;
-    text-align: center;
-    justify-content: center;
-}
-
-[data-testid="stMetricValue"] {
-    font-size: 16px !important;
-    text-align: center;
-}
 </style>
 """, unsafe_allow_html=True)
 
