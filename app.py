@@ -6,25 +6,43 @@ st.set_page_config(page_title="Veridi Dashboard", layout="wide")
 
 st.markdown("""
 <style>
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
 .block-container {
-    padding-top: 0.2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
+
 h1 {
-    font-size: 24px !important;
+    font-size: 20px !important;
     text-align: center;
-    margin-top: 0px;
-    margin-bottom: 10px;
+    margin: -35px 0 5px 0 !important;
+    padding: 0 !important;
 }
+
 h3 {
-    font-size: 14px !important;
+    font-size: 12px !important;
+    margin: 0px !important;
+    padding: 0px !important;
 }
+
+div[data-testid="stVerticalBlock"] {
+    gap: 0.2rem !important;
+}
+
+[data-testid="stMetric"] {
+    padding: 4px 8px;
+}
+
 [data-testid="stMetricLabel"] {
-    font-size: 12px;
+    font-size: 10px !important;
 }
+
 [data-testid="stMetricValue"] {
-    font-size: 22px;
+    font-size: 18px !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -52,7 +70,7 @@ c5.metric("Average Review Score", f"{avg_review:.2f}")
 
 def small(fig):
     fig.update_layout(
-        height=220,
+        height=160,
         margin=dict(l=5, r=5, t=20, b=5),
         font=dict(size=9),
         title_font=dict(size=11)
