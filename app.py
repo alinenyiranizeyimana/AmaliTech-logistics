@@ -83,32 +83,32 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     st.subheader("Delivery Performance Distribution")
-    fig = px.pie(delivered, names="Delivery_Status", hole=0.45)
+    fig = px.pie(delivered, names="Delivery Status", hole=0.45)
     st.plotly_chart(small(fig), use_container_width=True)
 
 with col2:
     st.subheader("Late Delivery Percentage by State")
     state = state.sort_values("Late_Percentage", ascending=False)
-    fig = px.bar(state, x="customer_state", y="Late_Percentage")
+    fig = px.bar(state, x="customer state", y="Late Percentage")
     st.plotly_chart(small(fig), use_container_width=True)
 
 with col3:
     st.subheader("Average Review Score by Delivery Status")
     review = delivered.groupby("Delivery_Status", as_index=False)["review_score"].mean()
-    fig = px.bar(review, x="Delivery_Status", y="review_score")
+    fig = px.bar(review, x="Delivery Status", y="review score")
     st.plotly_chart(small(fig), use_container_width=True)
 
 col4, col5, col6 = st.columns(3)
 
 with col4:
     st.subheader("Delivery Delay vs Review Score")
-    fig = px.scatter(delay, x="Days_Difference", y="review_score")
+    fig = px.scatter(delay, x="Days Difference", y="review score")
     st.plotly_chart(small(fig), use_container_width=True)
 
 with col5:
     st.subheader("Late Delivery % by Product Category")
     top_cat = category.sort_values("Late_Percentage", ascending=False).head(5)
-    fig = px.bar(top_cat, x="Late_Percentage", y="product_category_name_english", orientation="h")
+    fig = px.bar(top_cat, x="Late Percentage", y="product category name in english", orientation="h")
     st.plotly_chart(small(fig), use_container_width=True)
 
 with col6:
