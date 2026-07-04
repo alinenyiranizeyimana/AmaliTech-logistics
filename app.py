@@ -66,7 +66,7 @@ c5.metric("Average Review Score", f"{avg_review:.2f}")
 
 def small(fig):
     fig.update_layout(
-        height=175,
+        height=172,
         margin=dict(l=5, r=5, t=5, b=5),
         font=dict(size=7)
     )
