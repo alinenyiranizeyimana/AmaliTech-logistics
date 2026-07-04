@@ -11,38 +11,38 @@ footer {visibility: hidden;}
 
 .block-container {
     padding-top: 0rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
     padding-bottom: 0rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
 }
 
 h1 {
     font-size: 20px !important;
     text-align: center;
-    margin: -35px 0 5px 0 !important;
+    margin: -45px 0 2px 0 !important;
     padding: 0 !important;
 }
 
 h3 {
     font-size: 12px !important;
-    margin: 0px !important;
-    padding: 0px !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 div[data-testid="stVerticalBlock"] {
-    gap: 0.2rem !important;
+    gap: 0.1rem !important;
 }
 
 [data-testid="stMetric"] {
-    padding: 4px 8px;
+    padding: 2px 6px !important;
 }
 
 [data-testid="stMetricLabel"] {
-    font-size: 10px !important;
+    font-size: 9px !important;
 }
 
 [data-testid="stMetricValue"] {
-    font-size: 18px !important;
+    font-size: 17px !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -70,13 +70,13 @@ c5.metric("Average Review Score", f"{avg_review:.2f}")
 
 def small(fig):
     fig.update_layout(
-        height=160,
-        margin=dict(l=5, r=5, t=20, b=5),
-        font=dict(size=9),
-        title_font=dict(size=11)
+        height=170,
+        margin=dict(l=2, r=2, t=5, b=2),
+        font=dict(size=7),
+        showlegend=True
     )
-    fig.update_xaxes(title_font=dict(size=9), tickfont=dict(size=8))
-    fig.update_yaxes(title_font=dict(size=9), tickfont=dict(size=8))
+    fig.update_xaxes(title_font=dict(size=8), tickfont=dict(size=7))
+    fig.update_yaxes(title_font=dict(size=8), tickfont=dict(size=7))
     return fig
 
 col1, col2, col3 = st.columns(3)
