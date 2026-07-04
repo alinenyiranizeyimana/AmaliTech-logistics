@@ -10,27 +10,28 @@ header {visibility: hidden;}
 footer {visibility: hidden;}
 
 .block-container {
-    padding-top: 0rem;
+    padding-top: 0.5rem;
     padding-left: 0.4rem;
     padding-right: 0.4rem;
     padding-bottom: 0rem;
 }
 
-h1 {
-    font-size: 20px !important;
+h2 {
     text-align: center;
-    margin: -45px 0 2px 0 !important;
-    padding: 0 !important;
+    font-size: 22px !important;
+    margin-top: 0px !important;
+    margin-bottom: 8px !important;
+    padding: 0px !important;
 }
 
 h3 {
     font-size: 12px !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0px !important;
+    padding: 0px !important;
 }
 
 div[data-testid="stVerticalBlock"] {
-    gap: 0.1rem !important;
+    gap: 0.15rem !important;
 }
 
 [data-testid="stMetric"] {
@@ -53,7 +54,7 @@ category = pd.read_csv("category_performance.csv")
 monthly = pd.read_csv("monthly_performance.csv")
 delay = pd.read_csv("delay_review.csv")
 
-st.title("Veridi Logistics Last-Mile Audit Dashboard")
+st.markdown("<h2>Veridi Logistics Last-Mile Audit Dashboard</h2>", unsafe_allow_html=True)
 
 total = delivered["order_id"].nunique()
 late = delivered[delivered["Delivery_Status"] != "On Time"]["order_id"].nunique()
@@ -72,8 +73,7 @@ def small(fig):
     fig.update_layout(
         height=170,
         margin=dict(l=2, r=2, t=5, b=2),
-        font=dict(size=7),
-        showlegend=True
+        font=dict(size=7)
     )
     fig.update_xaxes(title_font=dict(size=8), tickfont=dict(size=7))
     fig.update_yaxes(title_font=dict(size=8), tickfont=dict(size=7))
