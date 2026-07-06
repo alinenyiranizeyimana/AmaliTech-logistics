@@ -32,7 +32,6 @@ h3 {
 div[data-testid="stVerticalBlock"] {
     gap: 0.35rem !important;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -129,10 +128,10 @@ with col4:
     st.subheader("Delivery Delay vs Average Review Score")
     fig = px.scatter(
         delay,
-        x="Days_Difference",
+        x="Delivery_Delay_Days",
         y="review_score",
         labels={
-            "Days_Difference": "Delivery Delay (Days)",
+            "Delivery_Delay_Days": "Delivery Delay (Days)",
             "review_score": "Average Review Score"
         }
     )
